@@ -101,6 +101,7 @@ export default () => {
         const check = target.parentNode.children[1];
         if (check.innerText === "done") {
             check.innerText = "";
+            setDeleteTodo(deleteTodo.filter((item) => index !== item));
         } else {
             check.innerText = "done";
             setDeleteTodo([...deleteTodo, index]);
