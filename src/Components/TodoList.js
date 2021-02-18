@@ -93,7 +93,7 @@ const Todo = styled.p`
 `;
 
 export default () => {
-    const [toDo, setToDo] = useState(localStorage.getItem(TODO) ? JSON.parse(localStorage.getItem(TODO)) : []);
+    const [toDo, setToDo] = useState(localStorage.getItem(TODO) ? JSON.parse(localStorage.getItem(TODO)) : [null]);
     const [deleteTodo, setDeleteTodo] = useState([]);
     
     const checkClick = (e, index) => {
