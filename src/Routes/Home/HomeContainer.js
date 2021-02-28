@@ -22,7 +22,7 @@ export default class extends React.Component {
 
         const open = localStorage.getItem(OPEN);
         if (open === null) {
-            localStorage.setItem(OPEN, false);
+            localStorage.setItem(OPEN, true);
         }
     }
 

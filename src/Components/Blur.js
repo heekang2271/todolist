@@ -65,11 +65,11 @@ const ContentHolder = styled.div`
 
 const Button = styled.div`
     position: relative;
-    width: 40px;
-    height: 80px;
+    width: 20px;
+    height: 100%;
     color: #767676;
     background-color: #D7D7D7;
-    right: -40px;
+    right: -20px;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -105,13 +105,13 @@ export default ({ bgNum, blurOnLoad, children }) => {
         <Container ref={element} open={open}>
             <Blur bg={bgArr[bgNum]} />
             <Image src={bgArr[bgNum]} onLoad={blurOnLoad} />
-            <Button onClick={clickHandler}>
+            {/* <Button onClick={clickHandler}>
                 {open ? (
                     <span className="material-icons">arrow_back_ios</span>
                 ) : (
                     <span className="material-icons">arrow_forward_ios</span>
                 )}
-            </Button>
+            </Button> */}
             <ContentHolder>
                 {children}
             </ContentHolder>
