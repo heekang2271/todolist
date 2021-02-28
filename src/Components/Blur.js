@@ -1,40 +1,16 @@
-import React, {useState, useRef} from "react";
 import styled from "styled-components";
 import { bgArr } from "./BgArr";
 
-const OPEN = "open";
-const WIDTH = "500px";
 
 const Container = styled.div`
     position: relative;
     top: 0;
-    left: ${props => props.open ? "0px" : `-${WIDTH}`};
-    width: ${WIDTH};
+    left: 0;
+    width: 500px;
     height: 100vh;
     
     display: flex;
     align-items: center;
-    justify-content: flex-end;
-    animation-duration: 0.7s;
-    animation-fill-mode: forwards;
-
-    @keyframes open {
-        0% {
-            left: ${`-${WIDTH}`};
-        }
-        100% {
-            left: 0px;
-        }
-    }
-
-    @keyframes close {
-        0% {
-            left: 0px;
-        }
-        100% {
-            left: ${`-${WIDTH}`};
-        }
-    }
 `;
 
 const Blur = styled.div`
@@ -63,55 +39,12 @@ const ContentHolder = styled.div`
     height: 100%;
 `;
 
-const Button = styled.div`
-    position: relative;
-    width: 20px;
-    height: 100%;
-    color: #767676;
-    background-color: #D7D7D7;
-    right: -20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    border-top-right-radius: 20px;
-    border-bottom-right-radius: 20px;
-    box-shadow: -4px 0px 3px 3px #D7D7D7;
-    cursor: pointer;
-    
-    & span {
-        font-weight: 700;
-    }
-`;
-
 
 export default ({ bgNum, blurOnLoad, children }) => {
-    const [open, setOpen] = useState(JSON.parse(localStorage.getItem(OPEN)));
-    const element = useRef();
-    const clickHandler = () => {
-        if (element.current) {
-            if (open) {
-                setOpen(false);
-                element.current.style.animationName = "close";
-                localStorage.setItem(OPEN, false);
-            } else {
-                setOpen(true);
-                element.current.style.animationName = "open";
-                localStorage.setItem(OPEN, true);
-            }
-        }
-    }
-    
     return (
-        <Container ref={element} open={open}>
+        <Container>
             <Blur bg={bgArr[bgNum]} />
             <Image src={bgArr[bgNum]} onLoad={blurOnLoad} />
-            {/* <Button onClick={clickHandler}>
-                {open ? (
-                    <span className="material-icons">arrow_back_ios</span>
-                ) : (
-                    <span className="material-icons">arrow_forward_ios</span>
-                )}
-            </Button> */}
             <ContentHolder>
                 {children}
             </ContentHolder>

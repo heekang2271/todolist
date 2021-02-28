@@ -4,7 +4,6 @@ import { getWeather } from "../../api";
 
 const MAX_BGNUM = 13;
 const COORD = "coord";
-const OPEN = "open";
 
 export default class extends React.Component {
     constructor(props) {
@@ -18,11 +17,6 @@ export default class extends React.Component {
             weatherLoad: true,
             bgLoad: true,
             blurLoad: true
-        }
-
-        const open = localStorage.getItem(OPEN);
-        if (open === null) {
-            localStorage.setItem(OPEN, true);
         }
     }
 
